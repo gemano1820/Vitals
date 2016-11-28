@@ -22,7 +22,26 @@ angular.module('vitalsApp')
         controller: 'PatientLoginCtrl'
       })
       
+      .when('/pharmacy', {
+        templateUrl: 'app/pharmacy/pharmacy.html',
+        controller: 'PharmacyCtrl'
+      })
       
+      .when('/drugencyclopedia', {
+        templateUrl: 'app/drugencyclopedia/drugencyclopedia.html',
+        controller: 'DrugEncyclopediaCtrl'
+      })
+      
+      .when('/appointment', {
+        templateUrl: 'app/appointment/appointment.html',
+        controller: 'AppointmentCtrl'
+      })
+      
+      .when('/messagecenter', {
+        templateUrl: 'app/messagecenter/messagecenter.html',
+        controller: 'MessageCenterCtrl'
+      })   
+            
       .when('/settings', {
         templateUrl: 'app/account/settings/settings.html',
         controller: 'SettingsCtrl',

@@ -18,6 +18,11 @@ function onConnect(socket) {
   });
 
   // Insert sockets below
+  require('../api/messagecenter/messagecenter.socket').register(socket);
+  require('../api/pharmacy/pharmacy.socket').register(socket);
+  require('../api/appointment/appointment.socket').register(socket);
+  require('../api/patient/patient.socket').register(socket);
+  require('../api/staff/staff.socket').register(socket);
   require('../api/thing/thing.socket').register(socket);
 }
 

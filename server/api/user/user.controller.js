@@ -20,13 +20,21 @@ exports.index = function(req, res) {
   });
 };
 
+
+exports.getAllDoctors = function(req, res) {
+  User.find({'role': 'doctor'},'_id name',  function (err, users) {
+    if(err) return res.status(500).send(err);
+    res.status(200).json(users);
+  });
+};
+
 /**
  * Creates a new user
  */
 exports.create = function (req, res, next) {
   var newUser = new User(req.body);
   newUser.provider = 'local';
-  newUser.role = 'user';
+  //newUser.role = 'patient';
   newUser.save(function(err, user) {
     if (err) return validationError(res, err);
     var token = jwt.sign({_id: user._id }, config.secrets.session, { expiresInMinutes: 60*5 });

@@ -4,17 +4,18 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 var AppointmentSchema = new Schema({
-  title: String,
+  subject: String,
   date: String,
   patient: {
             type: mongoose.Schema.Types.ObjectId,
-            ref: 'Patient'
+            ref: 'User'
         },
   doctor: {
             type: mongoose.Schema.Types.ObjectId,
-            ref: 'Staff'
+            ref: 'User'
         },
   type:String,
+  comments: String,
   active: Boolean
 });
 

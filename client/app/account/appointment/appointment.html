@@ -17,7 +17,7 @@
             <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
 			  <ul class="nav navbar-nav">
 				<li class="active"><a href="#intro">Home</a></li>
-				<li><a href="#doctor">Logout</a></li>
+				<li><a href="/">Logout</a></li>
 								
 				<li class="dropdown">
 				
@@ -68,39 +68,29 @@
                                                         <br>
                                                         
                                                          
-                                                            <form>
+                                                            <form name="form" ng-submit="bookAppointment(form)">
                                                                 <fieldset>
                                                                 <div>
-                                                                    <label for="input-name">Name </label> &nbsp;&nbsp;
-                                                                    <input type="text" id="input-name" placeholder="Name"> 
-                                                                    <br>
-                                                                   
-                                                                    <label for="input-email">Email address </label>&nbsp;&nbsp;
-                                                                    <input type="email" id="input-email" placeholder="Email address">
-                                                                    <br>
-                                                                    
+                                                                                                                                    
                                                                     <label for="select-doctor">Select your doctor </label>&nbsp;&nbsp;
-                                                                    <select name="select-doctor">
-                                                                        <option value="doc1">Doctor 1</option>
-                                                                        <option value="doc2">Doctor 2</option>
-                                                                        <option value="doc3">Doctor 3</option>
-                                                                        <option value="doc4">Doctor 4</option>
-                                                                    </select>
+                                                                    <select name="selectedFacilityId" ng-model="appointment.doctor" ng-options="fetchedDoctors.name for fetchedDoctors in allDoctors track by fetchedDoctors._id">
+                                                                   
+                                                                    </select>  
                                                                       <br>
                                                                     
                                                                     <label for="doa">Date of Appointment </label>&nbsp;&nbsp;
-                                                                    <input type="date" id="doa">
+                                                                    <input type="date" id="doa" ng-model="appointment.date">
                                                                     <br>
                                                                     
                                                                     <label for="input-subject">Subject</label>&nbsp;&nbsp;
-                                                                    <input type="text" id="input-subject" placeholder="Subject">
+                                                                    <input type="text" id="input-subject" placeholder="Subject" ng-model="appointment.subject">
                                                                     <br>
                                                                     
                                                                     <label for="input-message">Write in your message </label>&nbsp;&nbsp;
-                                                                    <textarea name="message" type="text" id="input-message" placeholder="Message"></textarea>
+                                                                    <textarea name="message" type="text" id="input-message" placeholder="Message" ng-model="appointment.comments"></textarea>
                                                                     <br>
                                                                     
-                                                                    <label for="input-submit" type="submit" value="Submit"> Submit</label>
+                                                                                                                                     <md-button flex type="submit" >Submit</md-button>
                                                                 </fieldset> 
                                                               </form>
                                                             

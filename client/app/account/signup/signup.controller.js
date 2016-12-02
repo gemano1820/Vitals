@@ -10,13 +10,14 @@ angular.module('vitalsApp')
 
       if(form.$valid) {
         Auth.createUser({
-          name: $scope.user.name,
+          name: $scope.user.fname + " " + $scope.user.lname,
           email: $scope.user.email,
-          password: $scope.user.password
+          password: $scope.user.password,
+          role: $scope.user.role
         })
         .then( function() {
           // Account created, redirect to home
-          $location.path('/');
+          $location.path('/home');
         })
         .catch( function(err) {
           err = err.data;

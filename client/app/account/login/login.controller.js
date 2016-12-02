@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('vitalsApp')
-  .controller('LoginCtrl', function ($scope, Auth, $location) {
+  .controller('LoginCtrl', function ($rootScope, $scope, Auth, $location) {
     $scope.user = {};
     $scope.errors = {};
 
@@ -16,6 +16,7 @@ angular.module('vitalsApp')
         .then( function() {
           // Logged in, redirect to home
           $location.path('/home');
+          $rootScope.currentUser = Auth.getCurrentUser();
         })
         .catch( function(err) {
           $scope.errors.other = err.message;

@@ -13,9 +13,16 @@ angular.module('vitalsApp')
           email: $scope.user.email,
           password: $scope.user.password
         })
-        .then( function() {
+        .then( function(currentUser) {
           // Logged in, redirect to home
-          $location.path('/home');
+            //var currentUser = Auth.getCurrentUser();
+            if(currentUser.userRole == "patient"){
+               $location.path('/home');
+            }else if(currentUser.userRole == "doctor"){
+               $location.path('/doctoraccount/home');
+            }
+            
+           
         })
         .catch( function(err) {
           $scope.errors.other = err.message;

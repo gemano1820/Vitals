@@ -107,6 +107,21 @@ angular.module('vitalsApp')
             }.bind(this));
 
              return deferred.promise;
-      }
+      },
+      
+      getDoctorAppointments: function (user){
+           var deferred = $q.defer();
+
+            $http.get('/api/appointments/getDoctorAppointment/'+user.currentUser).
+            success(function(data) {
+              deferred.resolve(data);
+            }).
+            error(function(err) {
+              deferred.reject(err);
+
+            }.bind(this));
+
+             return deferred.promise;
+      },
    };
   });

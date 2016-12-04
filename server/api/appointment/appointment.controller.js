@@ -27,6 +27,17 @@ exports.getCurrentUserAppointment = function(req, res) {
     })
 };
 
+exports.getDoctorAppointment = function(req, res) {
+  var userId = req.params.id;
+  
+  Appointment.find({'doctor': new ObjectId(userId), 'active':true} ).populate('patient', 'name').exec(function (err, appointments) {
+        if(err) { return handleError(res, err); }
+        return res.status(200).json(appointments);
+    })
+};
+
+
+
 // Get a single appointment
 exports.show = function(req, res) {
   Appointment.findById(req.params.id, function (err, appointment) {

@@ -1,5 +1,6 @@
- <div id="wrapper">
-               <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+  <div id="wrapper">
+    
+      <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
 	
         <div class="container navigation">
 		
@@ -16,7 +17,7 @@
             <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
 			  <ul class="nav navbar-nav">
 				<li class="active"><a href="#intro">Home</a></li>
-				<li><a href="#doctor">Logout</a></li>
+				<li><a href="/" ng-click="logoutUser()">Logout</a></li>
 								
 				<li class="dropdown">
 				
@@ -27,14 +28,16 @@
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container -->
-        </nav>  
+        </nav>
         
         
-           <section id="boxes" class="home-section paddingtop-80">
+        
+        
+                   <section id="boxes" class="home-section paddingtop-80">
 	
 		<div class="container">
 			<div class="row">
-				<div class="col-sm-3 col-md-3">
+			<div class="col-sm-3 col-md-3">
 					<div class="wow fadeInUp" data-wow-delay="0.2s">
 						<div class="box text-center">
 							
@@ -63,20 +66,37 @@
 						
 							<i class="fa fa-user-md fa-3x circled bg-skin"></i>
                                                         
-                                                        <h4 class="h-bold">Inbox</h4>
-                                                        <p>Communicate with your doctor using our message Center. 
-                                                          
-                                                        <br>
-                                                        <table>
-                                                         <tr>
-                                                            <th>From</th>
-                                                            <th>Subject</th>
-                                                            <th >Received</th>
+                                                        <h4 class="h-bold">COMPOSE MESSAGE</h4>
+                                                       
                                                         
-                                                      
-                                                            
-                                                        </table>
-						
+                                                         
+                                                            <form name="form" ng-submit="sendMessage(form)">
+                                                                <fieldset>
+                                                                <div>
+                                                                                                                                    
+                                                                    <label for="select-doctor">Select your doctor </label>&nbsp;&nbsp;
+                                                                    <br>
+                                                                    <select name="selectedFacilityId" ng-model="messagecenter.doctor" ng-options="fetchedDoctors.name for fetchedDoctors in allDoctors track by fetchedDoctors._id">
+                                                   
+                                                                    </select>  
+                                                                      <br>
+                                                                      <br>                                                            
+                                                                    <label for="input-subject">Subject</label>&nbsp;&nbsp;
+                                                                    <br>
+                                                                    <input type="text" id="input-subject" placeholder="Subject" ng-model="messagecenter.subject" style="width:50%">
+                                                                    <br>
+                                                                    <br>
+                                                                    <label for="input-message">Write in your message </label>&nbsp;&nbsp;
+                                                                    <br>
+                                                                    <textarea name="message" type="text" id="input-message" placeholder="Message" ng-model="messagecenter.content" style="width:50%;height:250px"></textarea>
+                                                                    <br>
+                                                                    <br>
+                                                                    <button flex type="submit" >Send</button>
+                                                                     <button flex ng-click="goBackToHome()" >Cancel</button>
+                                                                </fieldset> 
+                                                              </form>
+                                        
+						</div>
 					
 				
 			</div>
@@ -87,15 +107,7 @@
         
         
         
-        
-        
-        
-        
-        
-        
-        
-        
-        <footer>
+            <footer>
             <div class="sub-footer">
 		<div class="container">
 			<div class="row">
@@ -125,6 +137,8 @@
 		</div>
             
         </footer>
+        
+        
         
         
         

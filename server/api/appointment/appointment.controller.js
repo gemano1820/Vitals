@@ -2,6 +2,7 @@
 
 var _ = require('lodash');
 var Appointment = require('./appointment.model');
+var ObjectId = require('mongoose').Types.ObjectId; 
 
 // Get list of appointments
 exports.index = function(req, res) {
@@ -9,6 +10,21 @@ exports.index = function(req, res) {
     if(err) { return handleError(res, err); }
     return res.status(200).json(appointments);
   });
+};
+
+// Get list of appointments
+exports.getCurrentUserAppointment = function(req, res) {
+  var userId = req.params.id;
+  
+  /*Appointment.find({'patient': new ObjectId(userId)}.populate('doctor', 'name'), function (err, appointments) {
+    if(err) { return handleError(res, err); }
+    return res.status(200).json(appointments);
+  });*/
+  
+  Appointment.find({'patient': new ObjectId(userId), 'active':true} ).populate('doctor', 'name').exec(function (err, appointments) {
+        if(err) { return handleError(res, err); }
+        return res.status(200).json(appointments);
+    })
 };
 
 // Get a single appointment

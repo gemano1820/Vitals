@@ -7,7 +7,7 @@
 
 var User = require('../api/user/user.model');
 
-User.find({}).remove(function() {
+/*User.find({}).remove(function() {
   User.create( {
     provider: 'local',
     role: 'admin',
@@ -54,4 +54,4 @@ User.find({}).remove(function() {
       console.log('finished populating users');
     }
   );
-});
+});*/

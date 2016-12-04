@@ -17,7 +17,7 @@
             <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
 			  <ul class="nav navbar-nav">
 				<li class="active"><a href="#intro">Home</a></li>
-				<li><a href="/">Logout</a></li>
+				<li><a href="/" ng-click="logoutUser()">Logout</a></li>
 								
 				<li class="dropdown">
 				
@@ -90,9 +90,33 @@
                                                                     <textarea name="message" type="text" id="input-message" placeholder="Message" ng-model="appointment.comments"></textarea>
                                                                     <br>
                                                                     
-                                                                                                                                     <md-button flex type="submit" >Submit</md-button>
+                                                                    <button flex type="submit" >Submit</button>
                                                                 </fieldset> 
                                                               </form>
+                                                        
+                                                          <h4 class="h-bold">MY APPOINTMENTS</h4>
+                                                        <p>Below are your present appointments. 
+                                                           
+                                                        <br>
+                                                         <table>
+                                                         <th>
+                                                            <th>Date</th>
+                                                            <th>Subject</th>
+                                                            <th >Doctor</th>
+                                                        </th>  
+                                                        
+                                                       
+                                                            <tr ng-repeat="userAppointment in userAppointments">
+                                                       
+                                                                <td><input type="checkbox" ng-model="userAppointment.active" /> <br /> </td>
+                                                                <td>{{userAppointment.date}}</td>
+                                                                <td>{{userAppointment.subject}}</td>
+                                                                <td><p>{{userAppointment.doctor.name}}</p></td>
+                                                         </tr>
+                                                        </table>
+                                                        <br>
+                                                        <button flex ng-click="cancelAppointment()" >Cancel Appointment</button>
+                                                         <button flex ng-click="goBackToHome()" >Back</button>
                                                             
 						</div>
 					

@@ -16,7 +16,6 @@ angular.module('vitalsApp')
         .then( function() {
           // Logged in, redirect to home
           $location.path('/home');
-          $rootScope.currentUser = Auth.getCurrentUser();
         })
         .catch( function(err) {
           $scope.errors.other = err.message;

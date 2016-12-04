@@ -39,14 +39,13 @@
 						<div class="box text-center">
 							
 							<i class="fa fa-check fa-3x circled bg-skin"></i>
-							<table style="width:75%">
-
+							<table style="width:75%">                
                                                             <tr>
                                                                 <td> <a href="messagecenter">Inbox</a></td>
 
                                                             </tr>
                                                             <tr>
-                                                                <td> <a href="messagecenter/sentbox">Sent</a></td>
+                                                                <td> <a href="sentbox">Sent</a></td>
 
                                                             </tr>
                                                              <tr>
@@ -63,16 +62,22 @@
 						
 							<i class="fa fa-user-md fa-3x circled bg-skin"></i>
                                                         
-                                                        <h4 class="h-bold">Inbox</h4>
-                                                        <p>Communicate with your doctor using our message Center. 
+                                                        <h4 class="h-bold">Sent Items</h4>
                                                           
                                                         <br>
                                                         <table>
                                                          <tr>
-                                                            <th>From</th>
+                                                            <th>To</th>
                                                             <th>Subject</th>
                                                             <th >Received</th>
-                                                        
+                                                         </tr>
+                                                         
+                                                         <tr ng-repeat="sentMessage in sendMessages">
+                                                               
+                                                                <td>{{sentMessage.emailTo.name}}</td>
+                                                                <td>{{sentMessage.subject}}</td>
+                                                                <td><p>{{sentMessage.date}}</p></td>
+                                                         </tr>
                                                       
                                                             
                                                         </table>

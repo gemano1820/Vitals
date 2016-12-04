@@ -7,12 +7,12 @@ angular.module('vitalsApp')
   };
 
   
-  $scope.addThing = function() {
+ /* $scope.addThing = function() {
     if($scope.newThing === '') {
       return;
     }
     $http.post('/api/things', { name: $scope.newThing });
     $scope.newThing = '';
     $mdDialog.hide();
-  };
+  };*/
 });

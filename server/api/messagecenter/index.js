@@ -6,6 +6,8 @@ var controller = require('./messagecenter.controller');
 var router = express.Router();
 
 router.get('/', controller.index);
+router.get('/getSentItems/:id', controller.getSentItems);
+router.get('/getInbox/:id', controller.getInboxItems);
 router.get('/:id', controller.show);
 router.post('/', controller.create);
 router.put('/:id', controller.update);

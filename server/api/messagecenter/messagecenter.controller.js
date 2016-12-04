@@ -2,6 +2,7 @@
 
 var _ = require('lodash');
 var Messagecenter = require('./messagecenter.model');
+var ObjectId = require('mongoose').Types.ObjectId; 
 
 // Get list of messagecenters
 exports.index = function(req, res) {
@@ -9,6 +10,24 @@ exports.index = function(req, res) {
     if(err) { return handleError(res, err); }
     return res.status(200).json(messagecenters);
   });
+};
+
+exports.getSentItems = function(req, res) {
+  var userId = req.params.id;
+  
+  Messagecenter.find({'emailFrom': new ObjectId(userId), 'active':true} ).populate('emailTo', 'name').exec(function (err, appointments) {
+        if(err) { return handleError(res, err); }
+        return res.status(200).json(appointments);
+    })
+};
+
+exports.getInboxItems = function(req, res) {
+  var userId = req.params.id;
+  
+  Messagecenter.find({'emailTo': new ObjectId(userId), 'active':true} ).populate('emailFrom', 'name').exec(function (err, appointments) {
+        if(err) { return handleError(res, err); }
+        return res.status(200).json(appointments);
+    })
 };
 
 // Get a single messagecenter

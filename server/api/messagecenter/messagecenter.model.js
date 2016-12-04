@@ -6,15 +6,16 @@ var mongoose = require('mongoose'),
 var MessagecenterSchema = new Schema({
   subject: String,
   date: String,
-  patient: {
+  emailTo: {
             type: mongoose.Schema.Types.ObjectId,
-            ref: 'Patient'
+            ref: 'User'
         },
-  doctor: {
+  emailFrom: {
             type: mongoose.Schema.Types.ObjectId,
-            ref: 'Staff'
+            ref: 'User'
         },
   content: String,
+  type:String,
   active: Boolean
 });
 

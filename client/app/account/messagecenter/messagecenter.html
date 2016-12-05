@@ -49,8 +49,8 @@
                                                                 <td> <a href="messagecenter/sentbox">Sent</a></td>
 
                                                             </tr>
-                                                             <tr>
-                                                                <td> <a href="compose">Compose New Message</a></td>
+                                                             <tr ng-if="currentUser.role == 'patient'">
+                                                                <td> <a href="compose" >Compose New Message</a></td>
 
                                                             </tr>
                                                          
@@ -82,7 +82,9 @@
                                                       
                                                             
                                                         </table>
-						
+						 <br>
+                                                      
+                                                         <button flex ng-click="goBackToHome()" >Back</button>
 					
 				
 			</div>

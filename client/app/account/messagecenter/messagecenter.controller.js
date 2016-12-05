@@ -6,15 +6,23 @@ angular.module('vitalsApp')
     $scope.allDoctors = [];
      var currentUser = Auth.getCurrentUser();
         
-    /*AccountService.getAllDoctors().then(function(doctors) {
+    AccountService.getAllDoctors().then(function(doctors) {
 	$scope.allDoctors = doctors;
-    });*/
+    });
     
     AccountService.getInboxMessage({
           currentUser: currentUser._id
         }).then(function(inboxMessages) {
 	$scope.inboxMessages = inboxMessages;
     });
+    
+    $scope.goBackToHome = function(){
+        if(currentUser.role == "patient"){
+            $location.path('/home');
+        }else{
+             $location.path('doctoraccount/home');
+        }
+    };
     
     $scope.sendMessage = function(form) {
       $scope.submitted = true;

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('vitalsApp')
-  .factory('AccountService', function ($location, $rootScope, $http, User, $cookieStore, $q, Appointment, MessageCenter) {
+  .factory('AccountService', function ($location, $rootScope, $http, User, $cookieStore, $q, Appointment, MessageCenter, PharmacyCenter) {
     // AngularJS will instantiate a singleton by calling "new" on this function
       
        return {
@@ -22,12 +22,43 @@ angular.module('vitalsApp')
         }.bind(this));
 
         return deferred.promise;
+      },   
+      
+       getAllPatients: function() {
+      
+        var deferred = $q.defer();
+
+        $http.get('/api/users/allpatients').
+        success(function(data) {
+          deferred.resolve(data);
+        }).
+        error(function(err) {
+          deferred.reject(err);
+       
+        }.bind(this));
+
+        return deferred.promise;
       },    
       
       getUserAppointments: function (user){
            var deferred = $q.defer();
 
             $http.get('/api/appointments/getUserAppointment/'+user.currentUser).
+            success(function(data) {
+              deferred.resolve(data);
+            }).
+            error(function(err) {
+              deferred.reject(err);
+
+            }.bind(this));
+
+             return deferred.promise;
+      },
+      
+       getUserPrescriptions: function (user){
+           var deferred = $q.defer();
+
+            $http.get('/api/pharmacys/getUserPrescriptions/'+user.currentUser).
             success(function(data) {
               deferred.resolve(data);
             }).
@@ -61,6 +92,18 @@ angular.module('vitalsApp')
         return Appointment.save(appointment,
           function(data) {
             return cb(appointment);
+          },
+          function(err) {
+            return cb(err);
+          }.bind(this)).$promise;
+      },
+      
+       prescribeRx: function(pharmacy, callback) {
+        var cb = callback || angular.noop;
+
+        return PharmacyCenter.save(pharmacy,
+          function(data) {
+            return cb(pharmacy);
           },
           function(err) {
             return cb(err);

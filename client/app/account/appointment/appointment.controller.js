@@ -7,6 +7,7 @@ angular.module('vitalsApp')
      $scope.selectedDoctors = null;
     $scope.allDoctors = [];
      var currentUser = Auth.getCurrentUser();
+     $scope.currentUser = currentUser;
         
     AccountService.getAllDoctors().then(function(doctors) {
 	$scope.allDoctors = doctors;

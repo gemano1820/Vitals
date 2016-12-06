@@ -28,6 +28,13 @@ exports.getAllDoctors = function(req, res) {
   });
 };
 
+exports.getAllPatients = function(req, res) {
+  User.find({'role': 'patient'},'_id name',  function (err, users) {
+    if(err) return res.status(500).send(err);
+    res.status(200).json(users);
+  });
+};
+
 /**
  * Creates a new user
  */

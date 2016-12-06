@@ -16,7 +16,7 @@
             <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
 			  <ul class="nav navbar-nav">
 				<li class="active"><a href="#intro">Home</a></li>
-				<li><a href="#doctor">Logout</a></li>
+				<li><a href="/" ng-click="logoutUser()">Logout</a></li>
 								
 				<li class="dropdown">
 				
@@ -72,7 +72,7 @@
                                                             <th >Received</th>
                                                          </tr>
                                                          
-                                                         <tr ng-repeat="sentMessage in sendMessages">
+                                                         <tr ng-repeat="sentMessage in sendMessages" ng-click="viewSentMessage(sentMessage)">
                                                                
                                                                 <td>{{sentMessage.emailTo.name}}</td>
                                                                 <td>{{sentMessage.subject}}</td>

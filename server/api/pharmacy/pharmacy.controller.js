@@ -2,6 +2,7 @@
 
 var _ = require('lodash');
 var Pharmacy = require('./pharmacy.model');
+var ObjectId = require('mongoose').Types.ObjectId; 
 
 // Get list of pharmacys
 exports.index = function(req, res) {
@@ -9,6 +10,15 @@ exports.index = function(req, res) {
     if(err) { return handleError(res, err); }
     return res.status(200).json(pharmacys);
   });
+};
+
+exports.getCurrentUserPrescription = function(req, res) {
+  var userId = req.params.id;
+  
+  Pharmacy.find({'patient': new ObjectId(userId), 'active':true} ).populate('doctor', 'name').exec(function (err, appointments) {
+        if(err) { return handleError(res, err); }
+        return res.status(200).json(appointments);
+    })
 };
 
 // Get a single pharmacy

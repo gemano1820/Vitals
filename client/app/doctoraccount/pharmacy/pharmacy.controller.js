@@ -10,6 +10,10 @@ angular.module('vitalsApp')
 	$scope.allPatients = patients;
     });
     
+    $scope.goBackToHome = function(){
+         $location.path('/doctoraccount/home');
+      };
+    
      $scope.prescribeRx = function(form) {
       $scope.submitted = true;
 

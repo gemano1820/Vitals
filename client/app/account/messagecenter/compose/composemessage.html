@@ -16,6 +16,7 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
 			  <ul class="nav navbar-nav">
+                                <li class="active">Welcome {{currentUser.name}}</li>
 				<li class="active"><a href="#intro">Home</a></li>
 				<li><a href="/" ng-click="logoutUser()">Logout</a></li>
 								
@@ -73,11 +74,18 @@
                                                             <form name="form" ng-submit="sendMessage(form)">
                                                                 <fieldset>
                                                                 <div>
-                                                                                                                                    
-                                                                    <label for="select-doctor">Select your doctor </label>&nbsp;&nbsp;
-                                                                    <br>
-                                                                    <select name="selectedFacilityId" ng-model="messagecenter.doctor" ng-options="fetchedDoctors.name for fetchedDoctors in allDoctors track by fetchedDoctors._id">
-                                                   
+                                                                       
+                                                                    
+                                                                    <div id="selectDoctor" ng-if="currentUser.role == 'patient'">
+                                                                        <label for="select-doctor">Select your doctor </label>&nbsp;&nbsp;
+                                                                        <br>
+                                                                        <select name="selectedFacilityId" ng-model="messagecenter.doctor" ng-options="fetchedDoctors.name for fetchedDoctors in allDoctors track by fetchedDoctors._id">
+                                                                     </div>
+                                                                      <div id="selectPatient" ng-if="currentUser.role == 'doctor'">
+                                                                        <label for="select-doctor">Select your Patient </label>&nbsp;&nbsp;
+                                                                        <br>
+                                                                        <select name="selectedFacilityId" ng-model="messagecenter.doctor" ng-options="fetchedPatients.name for fetchedPatients in allPatients track by fetchedPatients._id">
+                                                                     </div>
                                                                     </select>  
                                                                       <br>
                                                                       <br>                                                            

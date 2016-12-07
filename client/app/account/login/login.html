@@ -27,6 +27,9 @@
               <div ng-message="required">This is required.</div>
             </div>
           </md-input-container>
+             <div style="color:red">
+                 {{loginError}}
+            </div>
           <div layout="row">
             <md-button class="md-primary" type="submit">Login</md-button>
             <md-button flex type="submit" href="/signup">Register</md-button>

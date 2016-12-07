@@ -38,7 +38,23 @@ angular.module('vitalsApp')
         }.bind(this));
 
         return deferred.promise;
-      },    
+      },   
+      
+      getAllUsers: function() {
+      
+        var deferred = $q.defer();
+
+        $http.get('/api/users/').
+        success(function(data) {
+          deferred.resolve(data);
+        }).
+        error(function(err) {
+          deferred.reject(err);
+       
+        }.bind(this));
+
+        return deferred.promise;
+      }, 
       
       getUserAppointments: function (user){
            var deferred = $q.defer();
@@ -158,6 +174,21 @@ angular.module('vitalsApp')
             $http.get('/api/appointments/getDoctorAppointment/'+user.currentUser).
             success(function(data) {
               deferred.resolve(data);
+            }).
+            error(function(err) {
+              deferred.reject(err);
+
+            }.bind(this));
+
+             return deferred.promise;
+      },
+      
+       updateUser: function(user){
+             var deferred = $q.defer();
+
+            $http.put('/api/users/'+user._id, user).
+            success(function() {
+              deferred.resolve();
             }).
             error(function(err) {
               deferred.reject(err);

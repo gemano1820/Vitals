@@ -3,9 +3,11 @@
 angular.module('vitalsApp')
   .controller('SentboxCtrl', function ($location, $rootScope, $scope, $http, AccountService, Auth,  CommonService) {
     
-     var currentUser = Auth.getCurrentUser();
+     
+    $scope.currentUser  = Auth.getCurrentUser();
+        
       AccountService.getSentMessage({
-          currentUser: currentUser._id
+          currentUser: $scope.currentUser ._id
         }).then(function(sendMessages) {
 	$scope.sendMessages = sendMessages;
     });

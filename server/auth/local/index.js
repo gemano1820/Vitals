@@ -11,6 +11,8 @@ router.post('/', function(req, res, next) {
     var error = err || info;
     if (error) return res.status(401).json(error);
     if (!user) return res.status(404).json({message: 'Something went wrong, please try again.'});
+    
+     if (user && !user.active) return res.status(401).json({message: 'Your account is not activated. Contact Admin'});
 
     var token = auth.signToken(user._id, user.role);
     res.json({token: token, userRole:user.role});

@@ -13,7 +13,9 @@ angular.module('vitalsApp')
           name: $scope.user.fname + " " + $scope.user.lname,
           email: $scope.user.email,
           password: $scope.user.password,
-          role: $scope.user.role
+          role: $scope.user.role,
+          date: Date(),
+          active:false
         })
         .then( function() {
           // Account created, redirect to home

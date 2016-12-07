@@ -4,6 +4,8 @@ angular.module('vitalsApp')
   .controller('LoginCtrl', function ($rootScope, $scope, Auth, $location) {
     $scope.user = {};
     $scope.errors = {};
+    
+    $scope.loginError = "";
 
     $scope.login = function(form) {
       $scope.submitted = true;
@@ -20,12 +22,13 @@ angular.module('vitalsApp')
                $location.path('/home');
             }else if(currentUser.userRole == "doctor"){
                $location.path('/doctoraccount/home');
+            }else if(currentUser.userRole == "admin"){
+               $location.path('/adminaccount/home');
             }
-            
-           
         })
         .catch( function(err) {
           $scope.errors.other = err.message;
+          $scope.loginError = err.message;
         });
       }
     };

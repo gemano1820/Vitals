@@ -10,6 +10,10 @@ angular.module('vitalsApp')
 	$scope.allDoctors = doctors;
     });
     
+    AccountService.getAllPatients().then(function(patients) {
+	$scope.allPatients = patients;
+    });
+    
     AccountService.getInboxMessage({
           currentUser: $scope.currentUser._id
         }).then(function(inboxMessages) {

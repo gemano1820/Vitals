@@ -50,9 +50,14 @@
                                                                      height="70" width="70"> <br> <br> 
                                                                 USER ACCESS CENTER</th>                            
                                                             <tr>
-                                                                <td> 
-                                                                   Active/Deactivate Patient/Doctor account. 
-                                                                </td>
+                                                               <tr>
+                                                                <td> <a href="/adminaccount/useraccess">Activate User</a></td>
+
+                                                            </tr>
+                                                            <tr>
+                                                                <td> <a href="/adminaccount/deactivateusers">Deactive User</a></td>
+
+                                                            </tr>
 
                                                             </tr>
                                                      
@@ -80,7 +85,7 @@
                                                         </tr>  
                                                         
                                                        
-                                                            <tr ng-repeat="user in allUsers">
+                                                            <tr ng-repeat="user in inactiveUsers">
                                                        
                                                                 <td><input type="checkbox" ng-model="user.active" /> <br /> </td>
                                                                 <td>{{user.name}}</td>
@@ -91,8 +96,8 @@
                                                          </tr>
                                                         </table>
                                                         <br>
-                                                        <button flex ng-click="activateDeactivateUser(true)" >Active User</button>
-                                                        <button flex ng-click="activateDeactivateUser(false)" >Deactivate User</button>
+                                                        <button flex ng-click="activateUser()" >Active User</button>
+                                                       
                                                          <button flex ng-click="goBackToHome()" >Back</button>
                                                             
 						</div>

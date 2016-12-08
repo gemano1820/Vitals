@@ -76,17 +76,20 @@
                                                                 <div>
                                                                        
                                                                     
-                                                                    <div id="selectDoctor" ng-if="currentUser.role == 'patient'">
+                                                                    <div ng-if="currentUser.role == 'patient'">
                                                                         <label for="select-doctor">Select your doctor </label>&nbsp;&nbsp;
                                                                         <br>
-                                                                        <select name="selectedFacilityId" ng-model="messagecenter.doctor" ng-options="fetchedDoctors.name for fetchedDoctors in allDoctors track by fetchedDoctors._id">
-                                                                     </div>
-                                                                      <div id="selectPatient" ng-if="currentUser.role == 'doctor'">
-                                                                        <label for="select-doctor">Select your Patient </label>&nbsp;&nbsp;
-                                                                        <br>
-                                                                        <select name="selectedFacilityId" ng-model="messagecenter.doctor" ng-options="fetchedPatients.name for fetchedPatients in allPatients track by fetchedPatients._id">
-                                                                     </div>
-                                                                    </select>  
+                                                                        <select  name="selectedFacilityId" ng-model="$parent.messagecenter.selectedUser" ng-options="fetchedDoctors.name for fetchedDoctors in allDoctors track by fetchedDoctors._id">
+                                                                        </select>
+                                                                    </div> 
+                                                                        <div ng-if="currentUser.role == 'doctor'">
+                                                                            <br>
+                                                                            <label for="select-patient">Select your patient </label>&nbsp;&nbsp;
+                                                                            <br>
+                                                                            <select name="selectedPatientId" ng-model="$parent.messagecenter.selectedUser" ng-options="fetchedPatient.name for fetchedPatient in allPatients track by fetchedPatient._id">
+                                                                            </select>
+                                                                        </div>
+
                                                                       <br>
                                                                       <br>                                                            
                                                                     <label for="input-subject">Subject</label>&nbsp;&nbsp;

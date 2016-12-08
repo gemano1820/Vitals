@@ -11,7 +11,10 @@ angular.module('vitalsApp')
         templateUrl: 'app/account/signup/signup.html',
         controller: 'SignupCtrl'
       })
-      
+      .when('/accountreview', {
+        templateUrl: 'app/account/signup/accountreview.html',
+        controller: 'SignupCtrl'
+      })
       .when('/settings', {
         templateUrl: 'app/account/settings/settings.html',
         controller: 'SettingsCtrl',

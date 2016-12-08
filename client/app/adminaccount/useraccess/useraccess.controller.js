@@ -5,19 +5,30 @@ angular.module('vitalsApp')
     $scope.message = 'Hello';
     
     $scope.currentUser  = Auth.getCurrentUser();
+    $scope.activeUsers = [];
+    $scope.inactiveUsers= [];
     
     AccountService.getAllUsers().then(function(users) {
          users.forEach(function(user) {
-               user.status = user.active;
-               user.active = false;
+             
+             if(user.active){
+                 $scope.activeUsers.push(user);
+                  user.status = user.active;
+                  user.active = false;
+             }else{
+                 $scope.inactiveUsers.push(user);
+                  user.status = user.active;
+                  user.active = false;
+             }
+              
           });
-	$scope.allUsers = users;
+	//$scope.allUsers = users;
     });
     
-     $scope.activateDeactivateUser = function(flag){
-        $scope.allUsers.forEach(function(user) {
+     $scope.activateUser = function(){
+        $scope.inactiveUsers.forEach(function(user) {
             if(user.active){
-                user.active = flag;
+                user.active = true;
                 user.date = Date();
                 AccountService.updateUser(user).then(function(){
                     $location.path('/adminaccount/home');
@@ -28,17 +39,17 @@ angular.module('vitalsApp')
          });
     };
     
-   /*  $scope.deActivateUser = function(){
-        $scope.allUsers.forEach(function(user) {
+    $scope.deactivateUser = function(){
+        $scope.activeUsers.forEach(function(user) {
             if(user.active){
                 user.active = false;
-                userAppointment.date = Date();
-                AccountService.activateUser(userAppointment).then(function(){
+                user.date = Date();
+                AccountService.updateUser(user).then(function(){
                     $location.path('/adminaccount/home');
                 }).catch(function(err){
                     $scope.errors.other = err.message;
                 })
             }
          });
-    };*/
+    };
   });

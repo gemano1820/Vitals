@@ -40,7 +40,7 @@ angular.module('vitalsApp')
     //  if(form.$valid) {
         AccountService.sendMessage({
           date: Date(),
-          emailTo: $scope.messagecenter.doctor,
+          emailTo: $scope.messagecenter.selectedUser,
           emailFrom: $scope.currentUser._id,
           subject: $scope.messagecenter.subject,
           content:  $scope.messagecenter.content,

@@ -6,5 +6,9 @@ angular.module('vitalsApp')
       .when('/adminaccount/useraccess', {
         templateUrl: 'app/adminaccount/useraccess/useraccess.html',
         controller: 'UseraccessCtrl'
+      })
+      .when('/adminaccount/deactivateusers', {
+        templateUrl: 'app/adminaccount/useraccess/deactivateuser.html',
+        controller: 'UseraccessCtrl'
       });
   });

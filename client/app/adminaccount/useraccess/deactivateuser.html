@@ -1,5 +1,6 @@
- <div id="wrapper">
-               <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+  <div id="wrapper">
+    
+      <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
 	
         <div class="container navigation">
 		
@@ -15,7 +16,7 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
 			  <ul class="nav navbar-nav">
-                               <li class="active">Welcome {{currentUser.name}}</li>
+                                 <li class="active">Welcome {{currentUser.name}}</li>
 				<li class="active"><a href="#intro">Home</a></li>
 				<li><a href="/" ng-click="logoutUser()">Logout</a></li>
 								
@@ -28,10 +29,12 @@
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container -->
-        </nav>  
+        </nav>
         
         
-           <section id="boxes" class="home-section paddingtop-80">
+        
+        
+                   <section id="boxes" class="home-section paddingtop-80">
 	
 		<div class="container">
 			<div class="row">
@@ -40,21 +43,24 @@
 						<div class="box text-center">
 							
 							<i class="fa fa-check fa-3x circled bg-skin"></i>
-							<table style="width:75%">                
+							<table>
+
+                                                            <th>
+                                                                <img src="https://cdn2.iconfinder.com/data/icons/business-flatcircle/512/calendar-512.png" 
+                                                                     height="70" width="70"> <br> <br> 
+                                                                USER ACCESS CENTER</th>                            
                                                             <tr>
-                                                                <td> <a href="messagecenter">Inbox</a></td>
+                                                               <tr>
+                                                                <td> <a href="/adminaccount/useraccess">Activate User</a></td>
 
                                                             </tr>
                                                             <tr>
-                                                                <td> <a href="sentbox">Sent</a></td>
+                                                                <td> <a href="/adminaccount/deactivateusers">Deactive User</a></td>
 
                                                             </tr>
-                                                             <tr>
-                                                                <td> <a href="compose">Compose New Message</a></td>
 
                                                             </tr>
-                                                         
-
+                                                     
                                                           </table>
 						</div>
 					</div>
@@ -63,26 +69,38 @@
 						
 							<i class="fa fa-user-md fa-3x circled bg-skin"></i>
                                                         
-                                                        <h4 class="h-bold">Sent Items</h4>
-                                                          
+                                                        <h4 class="h-bold">User Access Center</h4>
+                                                        <p> Active/Deactivate Patient/Doctor account</p>
                                                         <br>
-                                                        <table>
-                                                         <tr>
-                                                            <th>To</th>
-                                                            <th>Subject</th>
-                                                            <th >Received</th>
-                                                         </tr>
-                                                         
-                                                         <tr ng-repeat="sentMessage in sendMessages" ng-click="viewSentMessage(sentMessage)">
-                                                               
-                                                                <td>{{sentMessage.emailTo.name}}</td>
-                                                                <td>{{sentMessage.subject}}</td>
-                                                                <td><p>{{sentMessage.date}}</p></td>
-                                                         </tr>
+                                                    
                                                       
-                                                            
+                                                         <table>
+                                                         <tr>
+                                                            <th></th>
+                                                            <th>Name</th>
+                                                            <th>Email</th>
+                                                            <th >Role</th>
+                                                            <th >Date</th>
+                                                             <th >Status</th>
+                                                        </tr>  
+                                                        
+                                                       
+                                                            <tr ng-repeat="user in activeUsers">
+                                                       
+                                                                <td><input type="checkbox" ng-model="user.active" /> <br /> </td>
+                                                                <td>{{user.name}}</td>
+                                                                <td>{{user.email}}</td>
+                                                                <td><p>{{user.role}}</p></td>
+                                                                <td><p>{{user.date}}</p></td>
+                                                                <td><p>{{user.status}}</p></td>
+                                                         </tr>
                                                         </table>
-						
+                                                        <br>
+                                                       
+                                                        <button flex ng-click="deactivateUser()" >Deactivate User</button>
+                                                         <button flex ng-click="goBackToHome()" >Back</button>
+                                                            
+						</div>
 					
 				
 			</div>
@@ -93,15 +111,7 @@
         
         
         
-        
-        
-        
-        
-        
-        
-        
-        
-        <footer>
+            <footer>
             <div class="sub-footer">
 		<div class="container">
 			<div class="row">
@@ -131,6 +141,8 @@
 		</div>
             
         </footer>
+        
+        
         
         
         

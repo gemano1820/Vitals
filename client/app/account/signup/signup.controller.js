@@ -19,7 +19,7 @@ angular.module('vitalsApp')
         })
         .then( function() {
           // Account created, redirect to home
-          $location.path('/home');
+          $location.path('/accountreview');
         })
         .catch( function(err) {
           err = err.data;

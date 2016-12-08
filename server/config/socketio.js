@@ -18,6 +18,7 @@ function onConnect(socket) {
   });
 
   // Insert sockets below
+  require('../api/healthsummary/healthsummary.socket').register(socket);
   require('../api/messagecenter/messagecenter.socket').register(socket);
   require('../api/pharmacy/pharmacy.socket').register(socket);
   require('../api/appointment/appointment.socket').register(socket);

@@ -24,6 +24,8 @@ angular.module('vitalsApp')
                $location.path('/doctoraccount/home');
             }else if(currentUser.userRole == "admin"){
                $location.path('/adminaccount/home');
+            }else if(currentUser.userRole == "staff"){
+               $location.path('/staffaccount/home');
             }
         })
         .catch( function(err) {

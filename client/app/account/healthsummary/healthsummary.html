@@ -68,14 +68,20 @@
                                                         <table>
                                                          <tr>
                                                             <th>Test</th>
+                                                             <th>Results</th>
+                                                             <th>Normal Range</th>
                                                             <th>Doctor</th>
+                                                             <th>Comments</th>
                                                             <th >Performed Date</th>
                                                          </tr>
                                                           <tr ng-repeat="testresult in allTestResults" ng-click="viewMessage(inboxMessage)">
                                                                
-                                                                <td>{{inboxMessage.emailFrom.name}}</td>
-                                                                <td>{{inboxMessage.subject}}</td>
-                                                                <td><p>{{inboxMessage.date}}</p></td>
+                                                                <td>{{testresult.testname}}</td>
+                                                                <td>{{testresult.testresults}}</td>
+                                                                <td>{{testresult.normalrange}}</td>
+                                                                 <td>{{testresult.doctor.name}}</td>
+                                                                  <td>{{testresult.comments}}</td>
+                                                                  <td>{{testresult.date}}</td>
                                                          </tr>
                                                       
                                                             

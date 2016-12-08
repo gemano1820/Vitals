@@ -16,11 +16,6 @@ exports.index = function(req, res) {
 exports.getCurrentUserAppointment = function(req, res) {
   var userId = req.params.id;
   
-  /*Appointment.find({'patient': new ObjectId(userId)}.populate('doctor', 'name'), function (err, appointments) {
-    if(err) { return handleError(res, err); }
-    return res.status(200).json(appointments);
-  });*/
-  
   Appointment.find({'patient': new ObjectId(userId), 'active':true} ).populate('doctor', 'name').exec(function (err, appointments) {
         if(err) { return handleError(res, err); }
         return res.status(200).json(appointments);

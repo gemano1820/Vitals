@@ -5,6 +5,6 @@ angular.module('vitalsApp')
     $routeProvider
       .when('/healthsummary', {
         templateUrl: 'app/account/healthsummary/healthsummary.html',
-        controller: 'HealthsummaryCtrl'
+        controller: 'UserHealthsummaryCtrl'
       });
   });

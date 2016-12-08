@@ -2,9 +2,9 @@
 
 angular.module('vitalsApp')
   .controller('DialogController', function ($scope, $mdDialog, $http) {
-  $scope.closeDialog = function() {
+  /*$scope.closeDialog = function() {
     $mdDialog.hide();
-  };
+  };*/
 
   
  /* $scope.addThing = function() {

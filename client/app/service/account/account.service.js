@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('vitalsApp')
-  .factory('AccountService', function ($location, $rootScope, $http, User, $cookieStore, $q, Appointment, MessageCenter, PharmacyCenter) {
+  .factory('AccountService', function ($location, $rootScope, $http, User, $cookieStore, $q, Appointment, MessageCenter, PharmacyCenter, HealthSummary) {
     // AngularJS will instantiate a singleton by calling "new" on this function
       
        return {
@@ -189,6 +189,33 @@ angular.module('vitalsApp')
             $http.put('/api/users/'+user._id, user).
             success(function() {
               deferred.resolve();
+            }).
+            error(function(err) {
+              deferred.reject(err);
+
+            }.bind(this));
+
+             return deferred.promise;
+      },
+      
+      submitHealthSummary: function(healthsummary, callback) {
+        var cb = callback || angular.noop;
+
+        return HealthSummary.save(healthsummary,
+          function(data) {
+            return cb(healthsummary);
+          },
+          function(err) {
+            return cb(err);
+          }.bind(this)).$promise;
+      },
+      
+       getUserHealthSummary: function (user){
+           var deferred = $q.defer();
+
+            $http.get('/api/healthsummarys/getUserHealthSummary/'+user.currentUser).
+            success(function(data) {
+              deferred.resolve(data);
             }).
             error(function(err) {
               deferred.reject(err);

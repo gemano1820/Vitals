@@ -52,4 +52,8 @@ angular.module('vitalsApp')
             }
          });
     };
+    
+    $scope.goBackToHome = function(){
+         $location.path('adminaccount/home');
+    };
   });

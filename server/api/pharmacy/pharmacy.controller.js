@@ -15,7 +15,7 @@ exports.index = function(req, res) {
 exports.getCurrentUserPrescription = function(req, res) {
   var userId = req.params.id;
   
-  Pharmacy.find({'patient': new ObjectId(userId), 'active':true} ).populate('doctor', 'name').exec(function (err, appointments) {
+  Pharmacy.find({'patient': new ObjectId(userId), 'active':true} ).sort( {_id:-1 }).populate('doctor', 'name').exec(function (err, appointments) {
         if(err) { return handleError(res, err); }
         return res.status(200).json(appointments);
     })

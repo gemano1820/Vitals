@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('vitalsApp')
-  .controller('HealthsummaryCtrl', function ($location, $rootScope, $scope, $http, AccountService, Auth, CommonService) {
+  .controller('StaffHealthsummaryCtrl', function ($location, $rootScope, $scope, $http, AccountService, Auth, CommonService) {
     $scope.message = 'Hello';
     
       $scope.currentUser  = Auth.getCurrentUser();
@@ -37,5 +37,9 @@ angular.module('vitalsApp')
           $scope.errors.other = err.message;
         });
      // }
+    };
+    
+     $scope.goBackToHome = function(){
+         $location.path('/staffaccount/home');
     };
   });

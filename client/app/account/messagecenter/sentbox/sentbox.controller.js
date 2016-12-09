@@ -5,6 +5,14 @@ angular.module('vitalsApp')
     
      
     $scope.currentUser  = Auth.getCurrentUser();
+    
+     if($scope.currentUser.role == "patient"){
+            $scope.homepath = 'home';
+        }else if($scope.currentUser.role == "doctor"){
+             $scope.homepath = 'doctoraccount/home';
+        }else if($scope.currentUser.role == "staff"){
+              $scope.homepath = 'staffaccount/home';
+        }
         
       AccountService.getSentMessage({
           currentUser: $scope.currentUser ._id
@@ -16,5 +24,18 @@ angular.module('vitalsApp')
          CommonService.isSentMessage=true;
          CommonService.selectedMessage = selectedMessage;
          $location.path('/messagecenter/viewmessage');
+    };
+    
+     $scope.goBackToHome = function(){
+        if($scope.currentUser.role == "patient"){
+            $location.path('/home');
+            $scope.homepath = 'home';
+        }else if($scope.currentUser.role == "doctor"){
+             $location.path('doctoraccount/home');
+             $scope.homepath = 'doctoraccount/home';
+        }else if($scope.currentUser.role == "staff"){
+             $location.path('staffaccount/home');
+              $scope.homepath = 'staffaccount/home';
+        }
     };
   });

@@ -5,6 +5,13 @@ angular.module('vitalsApp')
       $scope.selectedDoctors = null;
     $scope.allDoctors = [];
      $scope.currentUser  = Auth.getCurrentUser();
+      if($scope.currentUser.role == "patient"){
+            $scope.homepath = 'home';
+        }else if($scope.currentUser.role == "doctor"){
+             $scope.homepath = 'doctoraccount/home';
+        }else if($scope.currentUser.role == "staff"){
+              $scope.homepath = 'staffaccount/home';
+        }
         
     AccountService.getAllDoctors().then(function(doctors) {
 	$scope.allDoctors = doctors;
@@ -23,8 +30,13 @@ angular.module('vitalsApp')
     $scope.goBackToHome = function(){
         if($scope.currentUser.role == "patient"){
             $location.path('/home');
-        }else{
+            $scope.homepath = 'home';
+        }else if($scope.currentUser.role == "doctor"){
              $location.path('doctoraccount/home');
+             $scope.homepath = 'doctoraccount/home';
+        }else if($scope.currentUser.role == "staff"){
+             $location.path('staffaccount/home');
+              $scope.homepath = 'staffaccount/home';
         }
     };
     

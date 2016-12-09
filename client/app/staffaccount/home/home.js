@@ -5,6 +5,6 @@ angular.module('vitalsApp')
     $routeProvider
       .when('/staffaccount/home', {
         templateUrl: 'app/staffaccount/home/home.html',
-        controller: 'HomeCtrl'
+        controller: 'StaffHomeCtrl'
       });
   });

@@ -1,6 +1,6 @@
 'use strict';
 
 angular.module('vitalsApp')
-  .controller('HomeCtrl', function ($scope) {
-    $scope.message = 'Hello';
+  .controller('StaffHomeCtrl', function ($rootScope, $scope, Auth) {
+     $scope.currentUser  = Auth.getCurrentUser();
   });

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('vitalsApp')
-  .controller('HomeCtrl', function ($rootScope, $scope, Auth) {
+  .controller('AdminHomeCtrl', function ($rootScope, $scope, Auth) {
     $scope.message = 'Hello';
     
      $scope.message = 'Hello';

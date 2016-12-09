@@ -15,7 +15,7 @@ exports.index = function(req, res) {
 exports.getSentItems = function(req, res) {
   var userId = req.params.id;
   
-  Messagecenter.find({'emailFrom': new ObjectId(userId), 'active':true} ).populate('emailTo', 'name').exec(function (err, appointments) {
+  Messagecenter.find({'emailFrom': new ObjectId(userId), 'active':true} ).sort( {_id:-1 }).populate('emailTo', 'name').exec(function (err, appointments) {
         if(err) { return handleError(res, err); }
         return res.status(200).json(appointments);
     })
@@ -24,7 +24,7 @@ exports.getSentItems = function(req, res) {
 exports.getInboxItems = function(req, res) {
   var userId = req.params.id;
   
-  Messagecenter.find({'emailTo': new ObjectId(userId), 'active':true} ).populate('emailFrom', 'name').exec(function (err, appointments) {
+  Messagecenter.find({'emailTo': new ObjectId(userId), 'active':true}).sort( {_id:-1 }).populate('emailFrom', 'name').exec(function (err, appointments) {
         if(err) { return handleError(res, err); }
         return res.status(200).json(appointments);
     })

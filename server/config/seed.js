@@ -11,10 +11,12 @@ var User = require('../api/user/user.model');
   User.create( {
     provider: 'local',
     role: 'admin',
-    name: 'John Smith',
-    email: 'john.smith@admin.com',
-    password: 'admin'
-  }, {
+    name: 'Administrator 01',
+    email: 'admin01@email.com',
+    password: 'admin',
+    active:true,
+    date: Date()
+  }}, {
     provider: 'local',
     role: 'doctor',
     name: 'Dr James Smith',

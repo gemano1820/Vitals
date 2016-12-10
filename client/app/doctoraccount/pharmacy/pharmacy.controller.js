@@ -30,7 +30,7 @@ angular.module('vitalsApp')
         })
         .then( function() {
           // Logged in, redirect to home
-          $location.path('/home');
+          $location.path('/doctoraccount/home');
         })
         .catch( function(err) {
           $scope.errors.other = err.message;
